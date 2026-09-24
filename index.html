@@ -2,13 +2,16 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
     <title>Happy Birthday, Kirana ❤️</title>
 
     <meta
         name="description"
-        content="Sesuatu yang kecil, dibuat khusus untuk Kirana."
+        content="Sedikit sesuatu untuk Kirana di hari ulang tahunnya."
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,17 +32,14 @@
             --white: #fffafd;
             --text: #eee6eb;
             --muted: #afa3ab;
-            --muted-light: #c8bcc4;
 
             --pink: #ed91b2;
             --pink-light: #f7bfd1;
-            --pink-soft: rgba(237, 145, 178, .12);
-            --pink-border: rgba(237, 145, 178, .24);
 
             --line: rgba(255,255,255,.09);
 
-            --container: 1180px;
-            --radius: 24px;
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
         }
 
         * {
@@ -54,49 +54,47 @@
         }
 
         body {
-            min-width: 320px;
+            min-height: 100vh;
+            min-height: 100svh;
             overflow-x: hidden;
+
             background:
                 radial-gradient(
                     circle at 50% -10%,
-                    rgba(237,145,178,.13),
-                    transparent 35%
+                    rgba(237,145,178,.10),
+                    transparent 38%
                 ),
                 var(--bg);
 
             color: var(--text);
-            font-family: "DM Sans", sans-serif;
+            font-family: var(--sans);
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
         }
 
-        body::selection {
-            background: var(--pink);
-            color: #160c11;
-        }
-
         button,
-        video {
+        iframe {
             font-family: inherit;
         }
 
         button {
             border: 0;
+            cursor: pointer;
         }
 
-        .container {
-            width: min(calc(100% - 40px), var(--container));
-            margin-inline: auto;
+        ::selection {
+            background: rgba(237,145,178,.25);
+            color: var(--white);
         }
 
-        /* =========================================================
+        /* =========================
            OPENING
-        ========================================================= */
+        ========================= */
 
         .opening {
             position: fixed;
             inset: 0;
-            z-index: 9999;
+            z-index: 1000;
 
             display: grid;
             place-items: center;
@@ -109,9 +107,9 @@
 
             background:
                 radial-gradient(
-                    circle at center,
-                    rgba(237,145,178,.11),
-                    transparent 45%
+                    circle at 50% 42%,
+                    rgba(237,145,178,.13),
+                    transparent 35%
                 ),
                 #080609;
 
@@ -120,43 +118,46 @@
                 visibility .8s ease;
         }
 
-        .opening.hide {
+        .opening.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        .opening-content {
-            width: min(100%, 620px);
+        .opening-inner {
+            width: min(100%, 680px);
             text-align: center;
-            animation: openingIn 1s ease both;
+            padding: 30px;
         }
 
         .opening-label {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
 
             color: var(--pink);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: .28em;
+            letter-spacing: .24em;
             text-transform: uppercase;
         }
 
-        .opening-title {
+        .opening h1 {
+            margin-bottom: 18px;
+
             color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(42px, 7vw, 72px);
-            line-height: 1.04;
-            letter-spacing: -.035em;
+            font-family: var(--serif);
+            font-size: clamp(46px, 8vw, 78px);
+            font-weight: 600;
+            line-height: .98;
+            letter-spacing: -.04em;
         }
 
-        .opening-text {
-            width: min(100%, 500px);
-            margin: 24px auto 34px;
+        .opening p {
+            width: min(100%, 520px);
+            margin: 0 auto 32px;
 
             color: var(--muted);
-            font-size: clamp(14px, 1.5vw, 16px);
-            line-height: 1.85;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         .opening-button {
@@ -164,202 +165,208 @@
             align-items: center;
             justify-content: center;
 
-            min-height: 52px;
+            min-height: 50px;
             padding: 0 28px;
 
-            border: 1px solid var(--pink-border);
+            border: 1px solid rgba(247,191,209,.25);
             border-radius: 999px;
 
-            background: var(--pink-soft);
-            color: var(--pink-light);
+            background: rgba(255,255,255,.035);
+            color: var(--white);
 
             font-size: 13px;
-            font-weight: 700;
-            letter-spacing: .03em;
-
-            cursor: pointer;
+            font-weight: 600;
 
             transition:
-                transform .25s ease,
-                background .25s ease,
-                border-color .25s ease;
+                background .3s ease,
+                border-color .3s ease,
+                transform .3s ease;
         }
 
         .opening-button:hover {
+            background: rgba(237,145,178,.12);
+            border-color: rgba(247,191,209,.45);
             transform: translateY(-2px);
-            background: rgba(237,145,178,.2);
-            border-color: rgba(237,145,178,.5);
         }
 
-        /* =========================================================
+        /* =========================
            MAIN
-        ========================================================= */
+        ========================= */
 
         main {
-            position: relative;
+            width: 100%;
         }
 
         section {
             position: relative;
+            width: 100%;
         }
 
-        /* =========================================================
+        .container {
+            width: min(1120px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        /* =========================
            HERO
-        ========================================================= */
+        ========================= */
 
         .hero {
             min-height: 100svh;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            place-items: center;
 
             padding:
-                max(100px, 12vh)
-                0
-                max(80px, 10vh);
+                100px 0
+                max(70px, env(safe-area-inset-bottom));
 
             text-align: center;
         }
 
         .hero-inner {
             width: min(100%, 900px);
-            margin-inline: auto;
+            margin: auto;
         }
 
         .eyebrow {
-            margin-bottom: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 24px;
 
             color: var(--pink);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: .28em;
+            letter-spacing: .22em;
             text-transform: uppercase;
         }
 
-        .hero-title {
-            color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(48px, 8vw, 94px);
-            font-weight: 600;
-            line-height: .98;
-            letter-spacing: -.045em;
+        .eyebrow::before,
+        .eyebrow::after {
+            content: "";
+            width: 22px;
+            height: 1px;
+            background: rgba(237,145,178,.45);
         }
 
-        .hero-description {
-            width: min(100%, 620px);
-            margin: 30px auto 0;
+        .hero h2 {
+            max-width: 950px;
+            margin: 0 auto 28px;
+
+            color: var(--white);
+            font-family: var(--serif);
+            font-size: clamp(54px, 9vw, 108px);
+            font-weight: 600;
+            line-height: .95;
+            letter-spacing: -.055em;
+        }
+
+        .hero p {
+            width: min(100%, 600px);
+            margin: 0 auto;
 
             color: var(--muted);
-            font-size: clamp(15px, 1.6vw, 18px);
-            line-height: 1.9;
+            font-size: clamp(14px, 1.7vw, 17px);
+            line-height: 1.85;
         }
 
-        .hero-line {
-            width: 70px;
-            height: 1px;
-            margin: 42px auto 0;
+        .scroll-note {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
 
-            background: var(--pink-border);
+            transform: translateX(-50%);
+
+            color: rgba(255,255,255,.35);
+            font-size: 10px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
         }
 
-        /* =========================================================
+        /* =========================
            AGE
-        ========================================================= */
+        ========================= */
 
         .age-section {
-            padding: 130px 0;
-            text-align: center;
+            padding: 150px 0;
+            overflow: hidden;
+        }
+
+        .age-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: clamp(40px, 8vw, 110px);
         }
 
         .age-number {
-            color: rgba(247,191,209,.93);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(150px, 28vw, 330px);
+            color: rgba(237,145,178,.92);
+
+            font-family: var(--serif);
+            font-size: clamp(180px, 32vw, 420px);
             font-weight: 500;
             line-height: .72;
-            letter-spacing: -.08em;
+            letter-spacing: -.09em;
 
-            text-shadow:
-                0 0 70px rgba(237,145,178,.08);
+            transform: translateX(-12px);
         }
 
-        .age-label {
-            margin-top: 52px;
+        .age-copy {
+            max-width: 500px;
+        }
+
+        .section-label {
+            margin-bottom: 18px;
 
             color: var(--pink);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: .3em;
+            letter-spacing: .2em;
             text-transform: uppercase;
         }
 
-        .age-title {
-            margin-top: 17px;
+        .section-title {
+            margin-bottom: 22px;
 
             color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(34px, 5vw, 58px);
-            line-height: 1.1;
-            letter-spacing: -.03em;
+            font-family: var(--serif);
+            font-size: clamp(36px, 5vw, 62px);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -.035em;
         }
 
-        .age-text {
-            width: min(100%, 650px);
-            margin: 24px auto 0;
-
+        .section-text {
             color: var(--muted);
-            font-size: clamp(14px, 1.4vw, 17px);
+            font-size: 15px;
             line-height: 1.9;
         }
 
-        /* =========================================================
+        /* =========================
            LETTER
-        ========================================================= */
+        ========================= */
 
         .letter-section {
             padding: 130px 0;
         }
 
-        .letter-wrapper {
-            width: min(100%, 900px);
-            margin-inline: auto;
+        .letter-wrap {
+            width: min(820px, 100%);
+            margin: 0 auto;
         }
 
-        .section-heading {
-            margin-bottom: 42px;
+        .letter-heading {
+            margin-bottom: 55px;
             text-align: center;
         }
 
-        .section-label {
-            margin-bottom: 15px;
-
-            color: var(--pink);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: .28em;
-            text-transform: uppercase;
-        }
-
-        .section-title {
-            color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(34px, 5vw, 54px);
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -.035em;
-        }
-
         .letter {
-            width: min(100%, 760px);
-            margin-inline: auto;
-
-            padding:
-                clamp(28px, 5vw, 58px)
-                clamp(22px, 5vw, 56px);
+            padding: clamp(30px, 5vw, 65px);
 
             border: 1px solid var(--line);
-            border-radius: var(--radius);
+            border-radius: 28px;
 
             background:
                 linear-gradient(
@@ -367,62 +374,55 @@
                     rgba(255,255,255,.035),
                     rgba(255,255,255,.012)
                 );
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,.18);
         }
 
-        .letter-heading {
-            margin-bottom: 32px;
+        .letter::before {
+            content: "“";
 
-            color: var(--pink-light);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(27px, 4vw, 38px);
-            line-height: 1.2;
-            text-align: center;
+            display: block;
+            margin-bottom: -15px;
+
+            color: rgba(237,145,178,.5);
+            font-family: var(--serif);
+            font-size: 80px;
+            line-height: 1;
         }
 
-        .letter-content {
-            color: #e7e0e4;
-            font-size: clamp(15px, 1.4vw, 17px);
-            line-height: 2;
-            text-align: left;
+        .letter p {
+            margin-bottom: 23px;
+
+            color: #e9dfe5;
+            font-family: var(--serif);
+            font-size: clamp(16px, 2vw, 19px);
+            line-height: 1.95;
         }
 
-        .letter-content p {
-            margin-bottom: 24px;
-        }
-
-        .letter-content p:last-child {
+        .letter p:last-child {
             margin-bottom: 0;
         }
 
-        /* =========================================================
+        .letter-opening {
+            color: var(--white) !important;
+            font-weight: 600;
+        }
+
+        /* =========================
            VIDEO
-        ========================================================= */
+        ========================= */
 
         .video-section {
             padding: 130px 0;
         }
 
-        .video-header {
-            width: min(100%, 720px);
-            margin: 0 auto 46px;
+        .video-heading {
+            width: min(700px, 100%);
+            margin: 0 auto 48px;
             text-align: center;
-        }
-
-        .video-description {
-            width: min(100%, 570px);
-            margin: 20px auto 0;
-
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.85;
         }
 
         .video-box {
             width: min(100%, 900px);
-            margin-inline: auto;
+            margin: 0 auto;
 
             overflow: hidden;
 
@@ -432,103 +432,129 @@
             background: #000;
 
             box-shadow:
-                0 30px 100px rgba(0,0,0,.4);
+                0 30px 80px rgba(0,0,0,.35);
         }
 
-        .video-box video {
-            display: block;
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
 
             width: 100%;
-            height: auto;
-            max-height: 78svh;
+            height: 100%;
 
-            object-fit: contain;
-
-            background: #000;
+            border: 0;
         }
 
-        /* =========================================================
+        .video-note {
+            width: min(700px, 100%);
+            margin: 22px auto 0;
+
+            color: rgba(255,255,255,.35);
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* =========================
            WISHES
-        ========================================================= */
+        ========================= */
 
         .wishes-section {
             padding: 130px 0;
         }
 
-        .cards-grid {
+        .center-heading {
+            width: min(700px, 100%);
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
-
-            width: min(100%, 1000px);
-            margin: 50px auto 0;
         }
 
-        .wish-card {
-            min-height: 240px;
-
-            padding: 34px 30px;
+        .card {
+            min-height: 250px;
+            padding: 34px;
 
             border: 1px solid var(--line);
             border-radius: 22px;
 
-            background: var(--card);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.035),
+                    rgba(255,255,255,.012)
+                );
 
             transition:
-                transform .3s ease,
-                border-color .3s ease,
-                background .3s ease;
+                transform .35s ease,
+                border-color .35s ease,
+                background .35s ease;
         }
 
-        .wish-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--pink-border);
-            background: var(--card-soft);
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(237,145,178,.25);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(237,145,178,.07),
+                    rgba(255,255,255,.015)
+                );
         }
 
         .card-number {
-            display: block;
             margin-bottom: 45px;
 
-            color: var(--pink);
+            color: rgba(237,145,178,.7);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: .2em;
+            letter-spacing: .18em;
         }
 
-        .wish-card h3 {
+        .card h3 {
             margin-bottom: 13px;
 
             color: var(--white);
-            font-family: "Playfair Display", serif;
+            font-family: var(--serif);
             font-size: 25px;
+            font-weight: 600;
         }
 
-        .wish-card p {
+        .card p {
             color: var(--muted);
             font-size: 14px;
             line-height: 1.8;
         }
 
-        /* =========================================================
+        /* =========================
            REASONS
-        ========================================================= */
+        ========================= */
 
         .reasons-section {
             padding: 130px 0;
         }
 
         .reasons-list {
-            width: min(100%, 900px);
-            margin: 55px auto 0;
+            width: min(900px, 100%);
+            margin: 0 auto;
         }
 
         .reason {
             display: grid;
             grid-template-columns: 100px 1fr;
-            gap: 34px;
+            gap: 35px;
 
-            padding: 30px 0;
+            padding: 34px 0;
 
             border-top: 1px solid var(--line);
         }
@@ -539,7 +565,7 @@
 
         .reason-number {
             color: var(--pink);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: .15em;
         }
@@ -548,57 +574,43 @@
             margin-bottom: 8px;
 
             color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(23px, 3vw, 31px);
-            font-weight: 500;
+            font-family: var(--serif);
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 600;
         }
 
         .reason p {
-            max-width: 650px;
-
             color: var(--muted);
-            font-size: 15px;
-            line-height: 1.85;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        /* =========================================================
+        /* =========================
            FINAL
-        ========================================================= */
+        ========================= */
 
         .final-section {
-            min-height: 80svh;
+            min-height: 90svh;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            place-items: center;
 
-            padding:
-                120px 0
-                max(100px, 12vh);
-
+            padding: 130px 0;
             text-align: center;
         }
 
         .final-inner {
-            width: min(100%, 720px);
-            margin-inline: auto;
+            width: min(760px, 100%);
+            margin: auto;
         }
 
-        .final-title {
-            color: var(--white);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(48px, 8vw, 82px);
-            line-height: 1;
-            letter-spacing: -.045em;
+        .final-section .section-title {
+            font-size: clamp(45px, 7vw, 82px);
         }
 
-        .final-text {
-            width: min(100%, 590px);
-            margin: 27px auto 35px;
-
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.9;
+        .final-section .section-text {
+            width: min(580px, 100%);
+            margin: 0 auto 35px;
         }
 
         .reveal-button {
@@ -607,59 +619,63 @@
             justify-content: center;
 
             min-height: 52px;
-            padding: 0 27px;
+            padding: 0 30px;
 
-            border: 1px solid var(--pink-border);
+            border: 1px solid rgba(237,145,178,.35);
             border-radius: 999px;
 
-            background: transparent;
-            color: var(--pink-light);
+            background: rgba(237,145,178,.08);
+            color: var(--white);
 
             font-size: 13px;
-            font-weight: 700;
-
-            cursor: pointer;
+            font-weight: 600;
 
             transition:
-                background .25s ease,
-                transform .25s ease,
-                border-color .25s ease;
+                background .3s ease,
+                transform .3s ease,
+                border-color .3s ease;
         }
 
         .reveal-button:hover {
+            background: rgba(237,145,178,.15);
+            border-color: rgba(237,145,178,.55);
             transform: translateY(-2px);
-            background: var(--pink-soft);
-            border-color: rgba(237,145,178,.45);
         }
 
         .hidden-message {
-            display: none;
+            max-height: 0;
+            margin-top: 0;
+            overflow: hidden;
 
-            width: min(100%, 580px);
-            margin: 34px auto 0;
-            padding: 28px;
+            opacity: 0;
 
-            border-top: 1px solid var(--line);
-
-            color: var(--pink-light);
-            font-family: "Playfair Display", serif;
-            font-size: clamp(22px, 3vw, 30px);
-            line-height: 1.6;
+            transition:
+                max-height 1s ease,
+                opacity .8s ease,
+                margin .8s ease;
         }
 
         .hidden-message.show {
-            display: block;
-            animation: fadeUp .7s ease both;
+            max-height: 300px;
+            margin-top: 45px;
+            opacity: 1;
         }
 
-        /* =========================================================
+        .hidden-message p {
+            color: var(--pink-light);
+            font-family: var(--serif);
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.7;
+        }
+
+        /* =========================
            FOOTER
-        ========================================================= */
+        ========================= */
 
         footer {
             padding:
-                45px 20px
-                max(45px, env(safe-area-inset-bottom));
+                40px 24px
+                max(35px, env(safe-area-inset-bottom));
 
             border-top: 1px solid var(--line);
 
@@ -667,68 +683,70 @@
         }
 
         footer p {
-            color: var(--muted);
-            font-size: 12px;
-            letter-spacing: .04em;
+            color: rgba(255,255,255,.35);
+            font-size: 11px;
+            line-height: 1.8;
         }
 
         footer strong {
-            display: block;
-            margin-top: 9px;
-
-            color: var(--pink-light);
-            font-family: "Playfair Display", serif;
-            font-size: 17px;
-            font-weight: 500;
+            color: rgba(247,191,209,.65);
+            font-weight: 600;
         }
 
-        /* =========================================================
-           FLOATING HEARTS
-        ========================================================= */
+        /* =========================
+           HEARTS
+        ========================= */
 
         .heart {
             position: fixed;
-            z-index: 10000;
-            pointer-events: none;
+            z-index: 999;
+
+            bottom: -20px;
 
             color: var(--pink);
 
-            animation:
-                heartFloat 2.7s ease-out forwards;
+            font-size: 14px;
+
+            pointer-events: none;
+
+            animation: floatHeart linear forwards;
         }
 
-        @keyframes heartFloat {
+        @keyframes floatHeart {
             0% {
-                opacity: 0;
                 transform:
                     translateY(0)
-                    scale(.5)
+                    scale(.7)
                     rotate(0deg);
+
+                opacity: 0;
             }
 
             15% {
-                opacity: 1;
+                opacity: .65;
             }
 
             100% {
-                opacity: 0;
                 transform:
-                    translateY(-180px)
-                    scale(1.15)
-                    rotate(20deg);
+                    translateY(-110vh)
+                    scale(1.2)
+                    rotate(25deg);
+
+                opacity: 0;
             }
         }
 
-        /* =========================================================
-           ANIMATIONS
-        ========================================================= */
+        /* =========================
+           REVEAL ANIMATION
+        ========================= */
 
         .reveal {
             opacity: 0;
             transform: translateY(25px);
+
             transition:
-                opacity .8s ease,
-                transform .8s ease;
+                opacity .9s ease,
+                transform .9s ease;
         }
 
         .reveal.visible {
@@ -736,167 +754,124 @@
             transform: translateY(0);
         }
 
-        @keyframes openingIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================================================
-           TABLET
-        ========================================================= */
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media (max-width: 900px) {
 
             .container {
-                width: min(calc(100% - 32px), 720px);
+                width: min(100%, calc(100% - 40px));
+            }
+
+            .age-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .age-number {
+                font-size: clamp(170px, 42vw, 300px);
+                text-align: center;
+                transform: none;
+            }
+
+            .age-copy {
+                max-width: 650px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: calc(100% - 32px);
+            }
+
+            .opening-inner {
+                padding: 20px;
+            }
+
+            .opening h1 {
+                font-size: clamp(42px, 14vw, 65px);
+            }
+
+            .opening p {
+                font-size: 14px;
+                line-height: 1.75;
             }
 
             .hero {
-                padding-top: 90px;
+                padding-top: 80px;
+            }
+
+            .hero h2 {
+                font-size: clamp(48px, 15vw, 76px);
+            }
+
+            .hero p {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .scroll-note {
+                bottom: 22px;
             }
 
             .age-section,
             .letter-section,
             .video-section,
             .wishes-section,
-            .reasons-section {
-                padding: 100px 0;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                width: min(100%, 600px);
-            }
-
-            .wish-card {
-                min-height: auto;
-            }
-
-            .reason {
-                grid-template-columns: 70px 1fr;
-                gap: 20px;
-            }
-        }
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 600px) {
-
-            .container {
-                width: min(calc(100% - 28px), 520px);
-            }
-
-            .hero {
-                min-height: 100svh;
-
-                padding:
-                    80px 0
-                    70px;
-            }
-
-            .hero-title {
-                font-size: clamp(43px, 14vw, 64px);
-            }
-
-            .hero-description {
-                font-size: 14px;
-                line-height: 1.8;
-            }
-
-            .eyebrow,
-            .section-label,
-            .opening-label {
-                font-size: 9px;
-                letter-spacing: .23em;
-            }
-
-            .age-section {
-                padding: 100px 0;
+            .reasons-section,
+            .final-section {
+                padding: 95px 0;
             }
 
             .age-number {
-                font-size: clamp(140px, 47vw, 220px);
+                font-size: clamp(150px, 48vw, 240px);
             }
 
-            .age-label {
-                margin-top: 38px;
-            }
-
-            .age-text {
-                font-size: 14px;
-                line-height: 1.8;
-            }
-
-            .letter-section,
-            .video-section,
-            .wishes-section,
-            .reasons-section {
-                padding: 90px 0;
-            }
-
-            .section-heading {
-                margin-bottom: 32px;
-            }
-
-            .letter {
-                padding: 30px 22px;
-                border-radius: 18px;
+            .section-title {
+                font-size: clamp(34px, 10vw, 48px);
             }
 
             .letter-heading {
-                margin-bottom: 26px;
-                font-size: 28px;
+                margin-bottom: 35px;
             }
 
-            .letter-content {
-                font-size: 15px;
-                line-height: 1.9;
+            .letter {
+                padding: 28px 22px;
+                border-radius: 20px;
             }
 
-            .letter-content p {
-                margin-bottom: 21px;
+            .letter::before {
+                font-size: 60px;
             }
 
-            .video-header {
-                margin-bottom: 32px;
-            }
-
-            .video-description {
-                font-size: 14px;
+            .letter p {
+                font-size: 16px;
+                line-height: 1.85;
+                margin-bottom: 20px;
             }
 
             .video-box {
                 border-radius: 16px;
             }
 
-            .cards-grid {
-                margin-top: 34px;
-                gap: 12px;
+            .video-note {
+                font-size: 10px;
             }
 
-            .wish-card {
-                padding: 27px 24px;
+            .card {
+                padding: 27px;
                 border-radius: 18px;
             }
 
@@ -904,112 +879,64 @@
                 margin-bottom: 30px;
             }
 
-            .wish-card h3 {
-                font-size: 24px;
-            }
-
-            .wish-card p {
-                font-size: 14px;
-            }
-
-            .reasons-list {
-                margin-top: 35px;
-            }
-
             .reason {
-                grid-template-columns: 1fr;
-                gap: 9px;
+                grid-template-columns: 48px 1fr;
+                gap: 18px;
                 padding: 27px 0;
             }
 
-            .reason-number {
-                font-size: 10px;
+            .reason h3 {
+                font-size: 25px;
             }
 
             .reason p {
-                font-size: 14px;
-                line-height: 1.8;
+                font-size: 13px;
             }
 
-            .final-section {
-                min-height: 75svh;
-                padding: 90px 0;
+            .final-section .section-title {
+                font-size: clamp(43px, 13vw, 68px);
             }
 
-            .final-title {
-                font-size: clamp(44px, 14vw, 66px);
-            }
-
-            .final-text {
-                font-size: 14px;
-                line-height: 1.8;
-            }
-
-            .hidden-message {
-                padding: 25px 10px;
-                font-size: 22px;
+            .hidden-message p {
+                font-size: 21px;
             }
         }
-
-        /* =========================================================
-           SMALL PHONE
-        ========================================================= */
 
         @media (max-width: 380px) {
 
             .container {
-                width: min(calc(100% - 22px), 360px);
+                width: calc(100% - 24px);
             }
 
-            .opening-content {
-                width: 100%;
+            .opening-inner {
+                padding: 12px;
             }
 
-            .opening-title {
-                font-size: 41px;
+            .opening h1 {
+                font-size: 40px;
             }
 
-            .opening-text {
+            .opening p {
                 font-size: 13px;
-                line-height: 1.75;
             }
 
-            .opening-button,
-            .reveal-button {
-                min-height: 48px;
-                padding-inline: 23px;
-                font-size: 12px;
+            .hero h2 {
+                font-size: 45px;
             }
 
             .letter {
-                padding: 27px 18px;
+                padding: 24px 18px;
             }
 
-            .letter-content {
-                font-size: 14px;
-                line-height: 1.85;
+            .letter p {
+                font-size: 15px;
             }
 
-            .letter-content p {
-                margin-bottom: 19px;
-            }
-
-            .wish-card {
-                padding: 25px 21px;
-            }
-
-            .reason h3 {
-                font-size: 24px;
-            }
-
-            .final-title {
-                font-size: 43px;
+            .reason {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
-
-        /* =========================================================
-           REDUCED MOTION
-        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -1030,23 +957,23 @@
 
 <body>
 
-    <!-- =========================================================
+    <!-- =========================
          OPENING
-    ========================================================= -->
+    ========================= -->
 
     <div class="opening" id="opening">
 
-        <div class="opening-content">
+        <div class="opening-inner">
 
             <div class="opening-label">
                 sedikit sesuatu buat kamu
             </div>
 
-            <h1 class="opening-title">
+            <h1>
                 Hai, Kirana.
             </h1>
 
-            <p class="opening-text">
+            <p>
                 Sebelum hari ini selesai, ada sedikit sesuatu
                 yang pengen aku kasih ke kamu.
             </p>
@@ -1064,9 +991,9 @@
     </div>
 
 
-    <!-- =========================================================
+    <!-- =========================
          MAIN
-    ========================================================= -->
+    ========================= -->
 
     <main>
 
@@ -1074,25 +1001,26 @@
 
         <section class="hero">
 
-            <div class="hero-inner container">
+            <div class="container hero-inner reveal">
 
                 <div class="eyebrow">
                     untuk seseorang yang spesial
                 </div>
 
-                <h1 class="hero-title">
-                    Happy Birthday<br>
-                    Kirana.
-                </h1>
+                <h2>
+                    Happy Birthday Kirana.
+                </h2>
 
-                <p class="hero-description">
+                <p>
                     Hari ini kamu ulang tahun.
-                    Jadi, untuk sekali ini, biarin aku sedikit lebih
-                    banyak ngomong tentang kamu.
+                    Jadi, untuk sekali ini, biarin aku sedikit
+                    lebih banyak ngomong tentang kamu.
                 </p>
 
-                <div class="hero-line"></div>
+            </div>
 
+            <div class="scroll-note">
+                scroll perlahan
             </div>
 
         </section>
@@ -1104,24 +1032,32 @@
 
             <div class="container">
 
-                <div class="age-number reveal">
-                    22
+                <div class="age-layout">
+
+                    <div class="age-number reveal">
+                        22
+                    </div>
+
+                    <div class="age-copy reveal">
+
+                        <div class="section-label">
+                            another chapter
+                        </div>
+
+                        <h2 class="section-title">
+                            Akhirnya 22 juga.
+                        </h2>
+
+                        <p class="section-text">
+                            Selamat ulang tahun untuk kamu, Kirana.
+                            Semoga bertambahnya umur bukan cuma tentang
+                            angka, tapi juga tentang semakin banyak hal
+                            baik yang datang ke hidup kamu.
+                        </p>
+
+                    </div>
+
                 </div>
-
-                <div class="age-label reveal">
-                    another chapter
-                </div>
-
-                <h2 class="age-title reveal">
-                    Akhirnya 22 juga.
-                </h2>
-
-                <p class="age-text reveal">
-                    Selamat ulang tahun untuk kamu, Kirana.
-                    Semoga bertambahnya umur bukan cuma tentang angka,
-                    tapi juga tentang semakin banyak hal baik yang datang
-                    ke hidup kamu.
-                </p>
 
             </div>
 
@@ -1132,32 +1068,34 @@
 
         <section class="letter-section">
 
-            <div class="letter-wrapper container">
+            <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="letter-wrap">
 
-                    <div class="section-label">
-                        sedikit dari aku
+                    <div class="letter-heading reveal">
+
+                        <div class="section-label">
+                            sedikit dari aku
+                        </div>
+
+                        <h2 class="section-title">
+                            Ada yang mau aku bilang.
+                        </h2>
+
                     </div>
 
-                    <h2 class="section-title">
-                        Ada yang mau aku bilang.
-                    </h2>
 
-                </div>
+                    <div class="letter reveal">
 
-                <article class="letter reveal">
-
-                    <h3 class="letter-heading">
-                        Untuk Kirana,
-                    </h3>
-
-                    <div class="letter-content">
+                        <p class="letter-opening">
+                            Untuk Kirana,
+                        </p>
 
                         <p>
-                            Aku sebenarnya
-                            nggak terlalu jago bikin beginian.
-                            Tapi karena hari ini ulang tahun kamu, aku pengen coba bikin sesuatu yang beda.
+                            Aku sebenarnya<br>
+                            nggak terlalu jago bikin beginian.<br>
+                            Tapi karena hari ini ulang tahun kamu,
+                            aku pengen coba bikin sesuatu yang beda.
                         </p>
 
                         <p>
@@ -1165,45 +1103,74 @@
                         </p>
 
                         <p>
-                            Aku cuma mau bilang terima kasih. Terima kasih sudah datang ke hidup aku dan mau tetap ada sampai sekarang.
+                            Aku cuma mau bilang terima kasih.
+                            Terima kasih sudah datang ke hidup aku
+                            dan mau tetap ada sampai sekarang.
                         </p>
 
                         <p>
-                            Terima kasih juga untuk semua hal kecil yang selama ini kamu lakukan. Buat kamu mungkin biasa aja, tapi sering kali hal-hal kecil itu justru yang aku ingat.
+                            Terima kasih juga untuk semua hal kecil
+                            yang selama ini kamu lakukan.
+                            Buat kamu mungkin biasa aja,
+                            tapi sering kali hal-hal kecil itu
+                            justru yang aku ingat.
                         </p>
 
                         <p>
-                            Aku tahu aku juga belum selalu bisa jadi pasangan yang sempurna. Kadang ngeselin, kadang bikin kamu kesel, kadang mungkin kurang peka juga.
+                            Aku tahu aku juga belum selalu bisa jadi
+                            pasangan yang sempurna.
+                            Kadang ngeselin, kadang bikin kamu kesel,
+                            kadang mungkin kurang peka juga.
                         </p>
 
                         <p>
-                            Tapi percaya deh, bukan berarti aku nggak peduli. Aku mungkin nggak selalu pintar nunjukinnya, tapi aku sayang sama kamu.
+                            Tapi percaya deh, bukan berarti aku nggak peduli.
+                            Aku mungkin nggak selalu pintar nunjukinnya,
+                            tapi aku sayang sama kamu.
                         </p>
 
                         <p>
-                            Di umur 22 ini aku pengen kamu lebih bahagia. Jangan terlalu sering mikirin hal-hal yang belum terjadi. Jangan terlalu keras sama diri sendiri kalau sesuatu nggak berjalan sesuai yang kamu mau.
+                            Di umur 22 ini aku pengen kamu lebih bahagia.
+                            Jangan terlalu sering mikirin hal-hal yang
+                            belum terjadi.
+                            Jangan terlalu keras sama diri sendiri
+                            kalau sesuatu nggak berjalan sesuai yang kamu mau.
                         </p>
 
                         <p>
-                            Kamu nggak harus selalu kuat. Kalau capek ya istirahat. Kalau sedih ya sedih aja dulu. Nanti kalau sudah agak mendingan, kita jalan lagi.
+                            Kamu nggak harus selalu kuat.
+                            Kalau capek ya istirahat.
+                            Kalau sedih ya sedih aja dulu.
+                            Nanti kalau sudah agak mendingan,
+                            kita jalan lagi.
                         </p>
 
                         <p>
-                            Aku juga berharap semua yang kamu cita-citakan bisa pelan-pelan tercapai. Yang belum tercapai tahun ini, mungkin memang belum waktunya. Bukan berarti nggak akan pernah terjadi.
+                            Aku juga berharap semua yang kamu cita-citakan
+                            bisa pelan-pelan tercapai.
+                            Yang belum tercapai tahun ini,
+                            mungkin memang belum waktunya.
+                            Bukan berarti nggak akan pernah terjadi.
                         </p>
 
                         <p>
-                            Dan satu hal lagi... semoga di umur 22 ini aku masih jadi salah satu orang yang bisa bikin kamu ketawa, bikin kamu nyaman, dan bisa kamu cari ketika kamu butuh seseorang.
+                            Dan satu hal lagi...
+                            semoga di umur 22 ini aku masih jadi salah satu
+                            orang yang bisa bikin kamu ketawa,
+                            bikin kamu nyaman,
+                            dan bisa kamu cari ketika kamu butuh seseorang.
                         </p>
 
                         <p>
-                            Pokoknya jangan berubah jadi orang lain cuma supaya disukai orang. Tetap jadi Kirana yang aku kenal.
+                            Pokoknya jangan berubah jadi orang lain
+                            cuma supaya disukai orang.
+                            Tetap jadi Kirana yang aku kenal.
                             Selamat ulang tahun, sayang. ❤️
                         </p>
 
                     </div>
 
-                </article>
+                </div>
 
             </div>
 
@@ -1216,7 +1183,7 @@
 
             <div class="container">
 
-                <div class="video-header reveal">
+                <div class="video-heading reveal">
 
                     <div class="section-label">
                         buat kamu
@@ -1226,30 +1193,32 @@
                         Ada satu hal yang mau aku tunjukin.
                     </h2>
 
-                    <p class="video-description">
+                    <p class="section-text">
                         Nggak perlu banyak kata.
                         Tinggal lihat sampai selesai ya.
                     </p>
 
                 </div>
 
+
                 <div class="video-box reveal">
 
-                    <video
-                        id="birthdayVideo"
-                        controls
-                        playsinline
-                        preload="metadata"
-                    >
-                        <source
-                            src="IMG_6490.MOV"
-                            type="video/quicktime"
-                        >
+                    <div class="video-frame">
 
-                        Browser kamu tidak mendukung pemutaran video.
-                    </video>
+                        <iframe
+                            src="https://drive.google.com/file/d/1W1mINR260wgnQD6m5njZpaY6sP8kpwM7/preview"
+                            title="Video untuk Kirana"
+                            allow="autoplay; fullscreen"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
 
                 </div>
+
+                <p class="video-note reveal">
+                    Sebuah video kecil yang sengaja aku simpan di sini buat kamu.
+                </p>
 
             </div>
 
@@ -1262,25 +1231,26 @@
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="center-heading reveal">
 
                     <div class="section-label">
-                        doa kecil buat kamu
+                        doaku buat kamu
                     </div>
 
                     <h2 class="section-title">
-                        Yang aku harapkan buat kamu.
+                        Semoga yang baik-baik datang ke kamu.
                     </h2>
 
                 </div>
 
-                <div class="cards-grid">
 
-                    <article class="wish-card reveal">
+                <div class="cards">
 
-                        <span class="card-number">
+                    <article class="card reveal">
+
+                        <div class="card-number">
                             01
-                        </span>
+                        </div>
 
                         <h3>
                             Sehat terus.
@@ -1295,30 +1265,30 @@
                     </article>
 
 
-                    <article class="wish-card reveal">
+                    <article class="card reveal">
 
-                        <span class="card-number">
+                        <div class="card-number">
                             02
-                        </span>
+                        </div>
 
                         <h3>
                             Semua dimudahkan.
                         </h3>
 
                         <p>
-                            Semoga urusan kamu satu per satu
-                            dipermudah dan apa yang sedang kamu
-                            perjuangkan menemukan jalannya.
+                            Semoga urusan kamu satu per satu dipermudah
+                            dan apa yang sedang kamu perjuangkan
+                            menemukan jalannya.
                         </p>
 
                     </article>
 
 
-                    <article class="wish-card reveal">
+                    <article class="card reveal">
 
-                        <span class="card-number">
+                        <div class="card-number">
                             03
-                        </span>
+                        </div>
 
                         <h3>
                             Bahagia terus.
@@ -1345,17 +1315,18 @@
 
             <div class="container">
 
-                <div class="section-heading reveal">
+                <div class="center-heading reveal">
 
                     <div class="section-label">
-                        alasan kecil
+                        kenapa kamu
                     </div>
 
                     <h2 class="section-title">
-                        Kenapa aku suka kamu.
+                        Beberapa hal yang aku suka dari kamu.
                     </h2>
 
                 </div>
+
 
                 <div class="reasons-list">
 
@@ -1452,38 +1423,43 @@
 
         <section class="final-section">
 
-            <div class="final-inner container">
+            <div class="container final-inner reveal">
 
-                <div class="section-label reveal">
+                <div class="section-label">
                     sebelum selesai
                 </div>
 
-                <h2 class="final-title reveal">
+                <h2 class="section-title">
                     Aku sayang kamu.
                 </h2>
 
-                <p class="final-text reveal">
+                <p class="section-text">
                     Mungkin website kecil ini nggak seberapa.
                     Tapi aku bikin sendiri karena aku pengen ulang tahun
-                    kamu punya sesuatu yang bisa kamu buka lagi kapan pun
-                    kamu mau.
+                    kamu punya sesuatu yang bisa kamu buka lagi
+                    kapan pun kamu mau.
                 </p>
 
                 <button
-                    class="reveal-button reveal"
+                    class="reveal-button"
                     id="revealButton"
                     type="button"
                 >
                     Ada satu hal lagi
                 </button>
 
+
                 <div
                     class="hidden-message"
                     id="hiddenMessage"
                 >
-                    Happy Birthday, sayang.<br>
-                    Semoga 22 jadi awal dari banyak hal baik buat kamu.<br>
-                    Love you. ❤️
+
+                    <p>
+                        Happy Birthday, sayang.<br>
+                        Semoga 22 jadi awal dari banyak hal baik buat kamu.<br>
+                        Love you. ❤️
+                    </p>
+
                 </div>
 
             </div>
@@ -1493,174 +1469,96 @@
     </main>
 
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
+    <!-- FOOTER -->
 
     <footer>
 
         <p>
             dibuat dengan penuh rasa sayang.
+            <strong>Kirana ♥</strong>
         </p>
-
-        <strong>
-            Kirana ♥
-        </strong>
 
     </footer>
 
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
-
     <script>
 
-        /* =====================================================
+        /* =========================
            OPENING
-        ===================================================== */
+        ========================= */
 
         const opening = document.getElementById("opening");
         const openButton = document.getElementById("openButton");
 
         openButton.addEventListener("click", () => {
 
-            opening.classList.add("hide");
+            opening.classList.add("hidden");
 
-            setTimeout(() => {
-                createHearts(5);
-            }, 500);
+            createHearts(12);
 
         });
 
 
-        /* =====================================================
+        /* =========================
            FINAL MESSAGE
-        ===================================================== */
+        ========================= */
 
         const revealButton = document.getElementById("revealButton");
         const hiddenMessage = document.getElementById("hiddenMessage");
 
         revealButton.addEventListener("click", () => {
 
-            const isShown =
-                hiddenMessage.classList.contains("show");
+            hiddenMessage.classList.add("show");
 
-            if (!isShown) {
+            revealButton.textContent = "❤️";
 
-                hiddenMessage.classList.add("show");
+            revealButton.style.pointerEvents = "none";
 
-                revealButton.textContent = "❤️";
-
-                createHearts(12);
-
-                setTimeout(() => {
-                    hiddenMessage.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-                }, 150);
-
-            }
+            createHearts(20);
 
         });
 
 
-        /* =====================================================
-           VIDEO HEARTS
-        ===================================================== */
-
-        const birthdayVideo =
-            document.getElementById("birthdayVideo");
-
-        birthdayVideo.addEventListener("play", () => {
-            createHearts(4);
-        });
-
-
-        /* =====================================================
-           INTERSECTION OBSERVER
-        ===================================================== */
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-        const observer =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach((entry) => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("visible");
-
-                            observer.unobserve(entry.target);
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        revealElements.forEach((element) => {
-            observer.observe(element);
-        });
-
-
-        /* =====================================================
+        /* =========================
            FLOATING HEARTS
-        ===================================================== */
+        ========================= */
 
-        function createHeart(x, y) {
+        function createHeart() {
 
-            const heart =
-                document.createElement("span");
+            const heart = document.createElement("div");
 
             heart.className = "heart";
-            heart.textContent = "♥";
 
-            const randomSize =
-                Math.random() * 12 + 12;
-
-            heart.style.fontSize =
-                `${randomSize}px`;
+            heart.textContent = Math.random() > .5
+                ? "♥"
+                : "♡";
 
             heart.style.left =
-                `${x}px`;
+                Math.random() * 100 + "vw";
 
-            heart.style.top =
-                `${y}px`;
+            heart.style.fontSize =
+                (10 + Math.random() * 12) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            heart.style.opacity =
+                (.25 + Math.random() * .45).toFixed(2);
 
             document.body.appendChild(heart);
 
             setTimeout(() => {
                 heart.remove();
-            }, 2800);
+            }, 10000);
         }
 
 
-        function createHearts(amount = 5) {
+        function createHearts(amount = 1) {
 
             for (let i = 0; i < amount; i++) {
 
                 setTimeout(() => {
-
-                    const x =
-                        window.innerWidth *
-                        (0.25 + Math.random() * 0.5);
-
-                    const y =
-                        window.innerHeight *
-                        (0.55 + Math.random() * 0.25);
-
-                    createHeart(x, y);
-
+                    createHeart();
                 }, i * 100);
 
             }
@@ -1668,64 +1566,94 @@
         }
 
 
-        /* =====================================================
-           OCCASIONAL HEART
-        ===================================================== */
+        let heartInterval =
+            setInterval(() => {
 
-        let heartTimer;
+                if (!document.hidden) {
+                    createHeart();
+                }
 
-        function startHeartTimer() {
+            }, 4500);
 
-            heartTimer =
-                setInterval(() => {
-
-                    if (
-                        document.visibilityState !==
-                        "visible"
-                    ) {
-                        return;
-                    }
-
-                    const x =
-                        Math.random() *
-                        window.innerWidth;
-
-                    const y =
-                        window.innerHeight -
-                        60;
-
-                    createHeart(x, y);
-
-                }, 9000);
-
-        }
-
-        startHeartTimer();
-
-
-        /* =====================================================
-           PAGE VISIBILITY
-        ===================================================== */
 
         document.addEventListener(
             "visibilitychange",
             () => {
 
-                if (
-                    document.visibilityState ===
-                    "hidden"
-                ) {
+                if (document.hidden) {
 
-                    clearInterval(heartTimer);
+                    clearInterval(heartInterval);
 
                 } else {
 
-                    startHeartTimer();
+                    heartInterval =
+                        setInterval(() => {
+
+                            if (!document.hidden) {
+                                createHeart();
+                            }
+
+                        }, 4500);
 
                 }
 
             }
         );
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -40px 0px"
+                }
+            );
+
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+
+        /* =========================
+           INITIAL REVEAL
+        ========================= */
+
+        setTimeout(() => {
+
+            const hero =
+                document.querySelector(".hero .reveal");
+
+            if (hero) {
+                hero.classList.add("visible");
+            }
+
+        }, 300);
 
     </script>
 
